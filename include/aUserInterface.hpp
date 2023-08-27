@@ -98,6 +98,27 @@ private:
 	std::string name;
 };
 
+class aIntDisplay
+{
+public:
+
+	aIntDisplay(vector2f pPosition, int* pValue)
+		: position(pPosition), value(pValue)
+	{}
+
+	int* getValue();
+	void setValue(int* pValue);
+
+	vector2f getPosition();
+	void setPosition(vector2f pPosition);
+
+private:
+
+	vector2f position;
+
+	int* value;
+};
+
 
 class aHeader
 {
@@ -138,11 +159,13 @@ public:
 	void renderSwitchBs();
 	void renderHeaders();
 	void renderTexts();
+	void renderDisplays();
 
 	void createSliderF(aSliderF pSlider);
 	void createSwitchB(aSwitchB pSwitch);
 	void createHeader(aHeader pHeader);
 	void createText(aText pText);
+	void createIntDisplay(aIntDisplay pDisplay);
 
 private:
 
@@ -151,4 +174,5 @@ private:
 	std::vector<aSwitchB> switches;
 	std::vector<aHeader> headers;
 	std::vector<aText> texts;
+	std::vector<aIntDisplay> displays;
 };

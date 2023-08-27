@@ -29,7 +29,7 @@ int main(int argc, char* args[])
 	float currentTime = utility::hireTimeInSeconds();
 
 	Uint32 fpsStart, fpsFrame;
-	float fps;
+	int fps;
 
 	interface.createHeader(aHeader(vector2f(20, 20), std::string("settings")));
 
@@ -53,9 +53,9 @@ int main(int argc, char* args[])
 	interface.createText(aText(vector2f(40, 410), std::string("s - create stick")));
 	interface.createText(aText(vector2f(40, 430), std::string("f - delete stick")));
 	interface.createText(aText(vector2f(40, 450), std::string("g - generate grid")));
-	interface.createText(aText(vector2f(40, 470), std::string("a - huj")));
+	interface.createText(aText(vector2f(40, 480), std::string("fps")));
 
-	interface.createSliderF(aSliderF(&fps, vector2f(40, 500), 0, std::string("fps"), 0, 100));
+	interface.createIntDisplay(aIntDisplay(vector2f(40, 490), &fps));
 
 	bool running = true;
 
@@ -137,6 +137,7 @@ int main(int argc, char* args[])
 		window.clear();
 		simulation.updateSimulation();
 		interface.updateUserInterface();
+
 		window.display();
 
 		int frameTicks = SDL_GetTicks() - startTicks;

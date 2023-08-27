@@ -164,6 +164,24 @@ void aText::setPosition(vector2f pPosition)
 	position = pPosition;
 }
 
+int* aIntDisplay::getValue()
+{
+	return (value);
+}
+void aIntDisplay::setValue(int* pValue)
+{
+	value = pValue;
+}
+
+vector2f aIntDisplay::getPosition()
+{
+	return (position);
+}
+void aIntDisplay::setPosition(vector2f pPosition)
+{
+	position = pPosition;
+}
+
 void aUserInterface::createSliderF(aSliderF pSlider)
 {
 	sliders.push_back(pSlider);
@@ -180,6 +198,12 @@ void aUserInterface::createText(aText pText)
 {
 	texts.push_back(pText);
 }
+
+void aUserInterface::createIntDisplay(aIntDisplay pDisplay)
+{
+	displays.push_back(pDisplay);
+}
+
 
 aSliderF* aUserInterface::checkSelectedSlider()
 {
@@ -246,6 +270,7 @@ void aUserInterface::updateUserInterface()
 	renderSwitchBs();
 	renderHeaders();
 	renderTexts();
+	renderDisplays();
 }
 
 void aUserInterface::renderSliderFs()
@@ -305,6 +330,17 @@ void aUserInterface::renderTexts()
 	for (int i = 0; i < int(texts.size()); i++)
 	{
 		window->aRenderText(font, vector2f(texts[i].getPosition().x, texts[i].getPosition().y), texts[i].getName().c_str(), color);
+	}
+	TTF_CloseFont(font);
+}
+
+void aUserInterface::renderDisplays()
+{
+	TTF_Font* font = TTF_OpenFont("res/font.ttf", 12);
+	SDL_Color color = {255, 255, 255, 255};
+	for (int i = 0; i < int(displays.size()); i++)
+	{
+		window->aRenderText(font, vector2f(displays[i].getPosition().x, displays[i].getPosition().y + 4), std::to_string(*displays[i].getValue()).c_str(), color);
 	}
 	TTF_CloseFont(font);
 }
