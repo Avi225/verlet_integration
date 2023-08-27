@@ -20,7 +20,7 @@
 
 https://github.com/Avi225/verlet_integration/assets/61160595/ace7b294-f665-4ce9-b4c8-8d3f9437254d
 
-### Building
+## Building
 1. Clone the repo
 2. Requires SDL2, SDL2_image and SDL2_ttf
 3. Example build command with mingw64:
